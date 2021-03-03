@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Training</title>
+</head>
+
+<body>
+
+    <div class="all">
+        <header> 
+            <!-- v-once => pembuat data menjadi constan/tidak bisa diubah -->
+            <h1>
+                {{number}}
+            </h1>
+            <p>bilangan {{checkNumber}}</p>
+            <img src="assets/recal-media-ueBIGLmiI5A-unsplash.jpg" width="500px">
+        </header>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <script>
+        const item = {
+            // string, number, boolean, array, object
+            name: 'Jeffrey Marcelino',
+            alert: 'Holaaaa',
+            qty: null,
+            firstName: 'Andre',
+            lastName: 'Antolis',
+            number: 10
+        }
+        const vm = new Vue({
+            // important !!! => el => element
+            el: '.all',
+            data: item,
+            methods: {
+                getname : function(){
+                    return 'Hello ' + this.name
+                },
+                changename : function(newname){
+                    this.name = newname
+                }
+            },
+            computed: {
+                total: function(){
+                    return this.qty * 10000
+                },
+                fullName: function(){
+                    return this.firstName + ' ' + this.lastName
+                },
+                checkNumber: function(){
+                    return this.number % 2 === 0 ? 'Genap' : 'Ganjil'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
